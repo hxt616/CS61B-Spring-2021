@@ -36,7 +36,7 @@ public class TestCorrection {
 
         int N = 100;
         for (int i = 0; i < N; i += 1) {
-            int operationNumber = StdRandom.uniform(0, 2);
+            int operationNumber = StdRandom.uniform(0, 3);
             if (operationNumber == 0) {
                 // addLast
                 int randVal = StdRandom.uniform(0, 100);
@@ -48,6 +48,11 @@ public class TestCorrection {
                 int size = correct.size();
                 System.out.println("size: " + size);
                 assertEquals(correct.size(), broken.size());
+            }else if (correct.size()>0) {
+                int getVal = correct.get(0);
+                int getV = broken.get(0);
+                System.out.println("getFirst(" + getVal + ")");
+                assertEquals(getVal, getV);
             }
         }
     }

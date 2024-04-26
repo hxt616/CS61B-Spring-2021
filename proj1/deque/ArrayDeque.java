@@ -15,9 +15,11 @@ public class ArrayDeque<T> {
     public void resizing(int container) {
         T[] a = (T[]) new Object[container];
         for(int i=0; i<size; i++) {
-            a[i] = list[i];
+            a[i] = list[(first+i)%list.length];
         }
         list = a;
+        first = 0;
+        last = size;
     }
 
     public void addFirst(T item) {
@@ -94,10 +96,10 @@ public class ArrayDeque<T> {
         }
     }
     public T get(int index) {
-        if((first+index)% list.length >= last)
+        if((first+index)% list.length >= size)
             return null;
         else
-            return list[(first+index)% list.length];
+            return list[(first+index)%list.length];
     }
 
 
