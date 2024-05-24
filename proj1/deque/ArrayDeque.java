@@ -67,7 +67,7 @@ public class ArrayDeque<T> {
 
     public T removeFirst() {
 
-        if(size < list.length/4 && (size > 8)) {
+        if(size < list.length/4 && (size > 16)) {
             resizing(size-1);
         }
 
