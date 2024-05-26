@@ -66,25 +66,23 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
-
-        if(size <= list.length/4 && (list.length >= 16)) {
-            resizing(size-1);
+        if(size < list.length/4 && (list.length >= 16)) {
+            resizing(size+1);
         }
-
         if(isEmpty())
             return null;
-        else {
-            size-=1;
-            T tmp = list[first];
-            first = (first+1)% list.length;
-            return tmp;
-        }
+
+        size-=1;
+        T tmp = list[first];
+        first = (first+1)% list.length;
+        return tmp;
+
     }
 
     public T removeLast() {
 
-        if(size <= list.length/4 && (list.length >= 16)) {
-            resizing(size-1);
+        if(size < list.length/4 && (list.length >= 16)) {
+            resizing(size+1);
         }
         if(isEmpty())
             return null;
