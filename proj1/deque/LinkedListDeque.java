@@ -27,16 +27,27 @@ public class LinkedListDeque<T> {
 
     public void addFirst(T item) {
         size += 1;
-        TNode tmp = first.next;
-        first.next = new TNode(item, first, tmp);
-        tmp.pre = first.next;
+//        TNode tmp = first.next;
+//        first.next = new TNode(item, first, tmp);
+//        tmp.pre = first.next;
+        TNode tmp = new TNode(item, null, null);
+        tmp.next = first.next;
+        tmp.pre = first;
+        first.next.pre = tmp;
+        first.next = tmp;
+
     }
 
     public void addLast(T item) {
         size += 1;
-        TNode tmp = last.pre;
-        last.pre =  new TNode(item, tmp, last);
-        tmp.next = last.pre;
+//        TNode tmp = last.pre;
+//        last.pre =  new TNode(item, tmp, last);
+//        tmp.next = last.pre;
+        TNode tmp = new TNode(item, null, null);
+        tmp.pre = last.pre;
+        tmp.next = last;
+        last.pre.next = tmp;
+        last.pre = tmp;
     }
 
     public boolean isEmpty() {
@@ -66,7 +77,9 @@ public class LinkedListDeque<T> {
             size--;
             T tmp = first.next.data;
             first.next = first.next.next;
-            first.next.pre = first;
+            if(first.next != null) {
+                first.next.pre = first;
+            }
             return tmp;
         }
     }

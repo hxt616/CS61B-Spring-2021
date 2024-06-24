@@ -19,21 +19,15 @@ public class ArrayDeque<T> {
         }
         list = a;
         first = 0;
-        last = size;
+        last = size-1;
     }
 
     public void addFirst(T item) {
-        if(first==0) {
-            list[first] = item;
-            last++;
+        if (size == list.length) {
+            resizing(size * 2);
         }
-        else {
-            if (size == list.length) {
-                resizing(size * 2);
-            }
-            list[(first-1+list.length)%list.length] = item;
-            first = (first-1+list.length)%list.length;
-        }
+        list[first] = item;
+        first = (first-1+list.length)%list.length;
         size+=1;
     }
 
@@ -41,7 +35,7 @@ public class ArrayDeque<T> {
         if (size == list.length) {
             resizing(size * 2);
         }
-        list[last%list.length] = item;
+        list[last] = item;
         last = (last+1)% list.length;
         size+=1;
     }
@@ -94,7 +88,7 @@ public class ArrayDeque<T> {
         }
     }
     public T get(int index) {
-        if((first+index)% list.length >= size)
+        if(index>size)
             return null;
         else
             return list[(first+index)%list.length];
