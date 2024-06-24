@@ -82,8 +82,8 @@ public class ArrayDeque<T> {
             return null;
         else {
             size-=1;
-            T tmp = list[(last-1) % list.length];
-            last = (last-1)% list.length;
+            T tmp = list[(last + list.length -1) % list.length];
+            last = (last + list.length - 1)% list.length;
             return tmp;
         }
     }
