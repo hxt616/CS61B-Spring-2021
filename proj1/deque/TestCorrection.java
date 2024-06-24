@@ -40,9 +40,18 @@ public class TestCorrection {
             if (operationNumber == 0) {
                 // addLast
                 int randVal = StdRandom.uniform(0, 100);
-                correct.addLast(randVal);
-                broken.addLast(randVal);
-                System.out.println("addLast(" + randVal + ")");
+//                correct.addLast(randVal);
+//                broken.addLast(randVal);
+//                System.out.println("addLast(" + randVal + ")");
+//                int reV =  correct.removeLast();
+//                broken.removeLast();
+//                System.out.println("removeLast(" + reV + ")");
+                correct.addFirst(randVal);
+                broken.addFirst(randVal);
+                System.out.println("addFirst(" + randVal + ")");
+                int reV =  correct.removeFirst();
+                broken.removeFirst();
+                System.out.println("removeFirst(" + reV + ")");
             } else if (operationNumber == 1) {
                 // size
                 int size = correct.size();
