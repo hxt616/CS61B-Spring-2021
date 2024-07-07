@@ -1,6 +1,6 @@
 package deque;
 
-public class LinkedListDeque<T> {
+public class LinkedListDeque<T> implements Deque<T> {
     public class TNode {
         public TNode pre;
         public T data;
@@ -25,6 +25,7 @@ public class LinkedListDeque<T> {
         size = 0;
     }
 
+    @Override
     public void addFirst(T item) {
         size += 1;
 //        TNode tmp = first.next;
@@ -38,6 +39,7 @@ public class LinkedListDeque<T> {
 
     }
 
+    @Override
     public void addLast(T item) {
         size += 1;
 //        TNode tmp = last.pre;
@@ -50,17 +52,20 @@ public class LinkedListDeque<T> {
         last.pre = tmp;
     }
 
-    public boolean isEmpty() {
-        if(size==0)
-            return true;
-        else
-            return false;
-    }
+//    @Override
+//    public boolean isEmpty() {
+//        if(size==0)
+//            return true;
+//        else
+//            return false;
+//    }
 
+    @Override
     public int size() {
         return size;
     }
 
+    @Override
     public void printDeque() {
         TNode p = first;
         for(int i=1; i<size; i++) {
@@ -70,6 +75,7 @@ public class LinkedListDeque<T> {
         System.out.println(p.data);
     }
 
+    @Override
     public T removeFirst() {
         if(size==0)
             return null;
@@ -84,6 +90,7 @@ public class LinkedListDeque<T> {
         }
     }
 
+    @Override
     public T removeLast() {
         if(size==0)
             return null;
@@ -96,6 +103,7 @@ public class LinkedListDeque<T> {
         }
     }
 
+    @Override
     public T get(int index) {
         if(index>size)
             return null;
