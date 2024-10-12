@@ -2,9 +2,9 @@ package deque;
 
 public class LinkedListDeque<T> implements Deque<T> {
     public class TNode {
-        public TNode pre;
-        public T data;
-        public TNode next;
+        private TNode pre;
+        private T data;
+        private TNode next;
 
         public TNode(T d, TNode p, TNode n) {
             data = d;
@@ -68,7 +68,7 @@ public class LinkedListDeque<T> implements Deque<T> {
     @Override
     public void printDeque() {
         TNode p = first;
-        for(int i=1; i<size; i++) {
+        for (int i = 1; i < size; i++) {
             System.out.print(p.next.data + " ");
             p = p.next;
         }
@@ -77,13 +77,14 @@ public class LinkedListDeque<T> implements Deque<T> {
 
     @Override
     public T removeFirst() {
-        if(size==0)
+        if (size == 0) {
             return null;
+        }
         else {
             size--;
             T tmp = first.next.data;
             first.next = first.next.next;
-            if(first.next != null) {
+            if (first.next != null) {
                 first.next.pre = first;
             }
             return tmp;
@@ -92,8 +93,9 @@ public class LinkedListDeque<T> implements Deque<T> {
 
     @Override
     public T removeLast() {
-        if(size==0)
+        if (size == 0) {
             return null;
+        }
         else {
             size--;
             T tmp = last.pre.data;
@@ -105,22 +107,26 @@ public class LinkedListDeque<T> implements Deque<T> {
 
     @Override
     public T get(int index) {
-        if(index>size)
+        if (index > size) {
             return null;
+        }
         TNode p = first;
-        for(int i=0; i<index; i++) {
+        for (int i = 0; i < index; i++) {
             p = p.next;
         }
         return p.next.data;
     }
 
     public T getRecursiveHelper(int index, TNode t) {
-        if(index>size)
+        if (index > size) {
             return null;
-        if(index==0)
+        }
+        if (index == 0) {
             return t.next.data;
-        else
-            return getRecursiveHelper(index-1, t.next);
+        }
+        else {
+            return getRecursiveHelper(index - 1, t.next);
+        }
     }
 
     public T getRecursive(int index) {

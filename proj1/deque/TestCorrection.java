@@ -1,8 +1,8 @@
 package deque;
 
 import edu.princeton.cs.algs4.StdRandom;
-        import org.junit.Test;
-        import static org.junit.Assert.*;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  * Created by hug.
@@ -57,7 +57,7 @@ public class TestCorrection {
                 int size = correct.size();
                 System.out.println("size: " + size);
                 assertEquals(correct.size(), broken.size());
-            }else if (correct.size()>0) {
+            } else if (!correct.isEmpty()) {
                 int getVal = correct.get(0);
                 int getV = broken.get(0);
                 System.out.println("getFirst(" + getVal + ")");
